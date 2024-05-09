@@ -22,3 +22,10 @@ spring:
           filters:
             - AddRequestHeader=post-request, post-request-header2
             - AddResponseHeader=post-response, post-response-header2
+        - id: auth-service
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/auth-service/**
+          filters:
+            - AddRequestHeader=auth-request, auth-request-header2
+            - AddResponseHeader=auth-response, auth-response-header2
