@@ -14,12 +14,11 @@ spring:
 
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: post-service
-            uri: http://localhost:8081/
-            predicates:
-              - Path=/post-service/**
-            filters:
-              - AddRequestHeader=post-request, post-request-header2
-              - AddResponseHeader=post-response, post-response-header2
+      routes:
+        - id: post-service
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/post-service/**
+          filters:
+            - AddRequestHeader=post-request, post-request-header2
+            - AddResponseHeader=post-response, post-response-header2
