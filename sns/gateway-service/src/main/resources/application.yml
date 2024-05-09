@@ -1,19 +1,25 @@
-spring:
-  application:
-    name: gateway-service
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: post-service
-            uri: lb://POST-SERVICE
-            predicates:
-              - Path=/post/**
 server:
   port: 8000
+
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: post-service
+            uri: http://localhost:8081/
+            predicates:
+              - Path=/post-service/**
+            filters:
+              - AddRequestHeader=post-request, post-request-header2
+              - AddResponseHeader=post-response, post-response-header2

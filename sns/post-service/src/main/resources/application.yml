@@ -1,8 +1,10 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: post-service
-server:
-  port: 8001
+
 eureka:
   client:
     register-with-eureka: true
